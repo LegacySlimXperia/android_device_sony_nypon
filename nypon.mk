@@ -137,10 +137,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     lights.montblanc
 
-# OTA app (https://github.com/percy-g2/android_packages_apps_OTA-center)
-PRODUCT_PACKAGES += \
-    androdevlinuxCenter
-
 # Misc
 PRODUCT_PACKAGES += \
     com.android.future.usb.accessory
@@ -204,8 +200,8 @@ PRODUCT_COPY_FILES += \
     device/sony/nypon/prebuilt/config/gps.conf:system/etc/gps.conf\
     device/sony/nypon/prebuilt/config/cacert.txt:system/etc/suplcert/cacert.txt
 
-#PRODUCT_PROPERTY_OVERRIDES += \
-#sys.mem.max_hidden_apps=10
+PRODUCT_PROPERTY_OVERRIDES += \
+    sys.mem.max_hidden_apps=10
 
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.usb.config=mtp \
@@ -310,6 +306,10 @@ $(call inherit-product-if-exists, vendor/sony/nypon/nypon-vendor.mk)
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.sf.lcd_density=240
+
+# TWRP
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/prebuilt/root/twrp.fstab:recovery/root/etc/twrp.fstab
 
 #Goo Manager support
 PRODUCT_PROPERTY_OVERRIDES += \
